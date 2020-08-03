@@ -19,6 +19,8 @@ const blackButton = document.querySelector('#black');
 
 const rainbowButton = document.querySelector('#rainbow');
 
+const opacityButton = document.querySelector('#opacity');
+
 function addBlackClass(e) {
     e.target.style = '';
     e.target.classList.add('black');
@@ -40,10 +42,27 @@ function activateRandomMode() {
         square.removeEventListener('mouseover', addBlackClass);
         square.addEventListener('mouseover', addRandomColor);
     })
-}                                                          
+}
+
+function addOpacity(e) {
+    e.target.style = '';
+    let newOpacity = ((+e.target.getAttribute('data-opacity') + 0.1)
+    .toFixed(1));
+    e.target.setAttribute('data-opacity', `${newOpacity}`);
+    e.target.style.backgroundColor = `rgba(0,0,0,${newOpacity})`;
+}
+
+function activateOpacityMode() {
+    allSquares.forEach((square) => {
+        square.removeEventListener('mouseover', addBlackClass);
+        square.removeEventListener('mouseover', addRandomColor);
+        square.addEventListener('mouseover', addOpacity);
+    })
+}
 
 function clearGrid() {
     allSquares.forEach((square) => {
+        square.style = '';
         square.classList.remove('black');
         })
 }
@@ -52,4 +71,6 @@ blackButton.addEventListener('click', activateBlackMode)
 
 rainbowButton.addEventListener('click', activateRandomMode)
 
-clearButton.addEventListener('click', clearGrid)                                                   
+opacityButton.addEventListener('click', activateOpacityMode)
+
+clearButton.addEventListener('click', clearGrid)                                       

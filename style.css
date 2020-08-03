@@ -4,6 +4,10 @@
     display: grid;
 }
 
+.square {
+    border: 1px dotted grey;
+}
+
 .black {
     background-color: black;
 }
