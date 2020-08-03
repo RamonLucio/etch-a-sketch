@@ -9,7 +9,7 @@ for (let i = 0; i < squaresSquared; i++) {
     let square = document.createElement('div');
     square.classList.add('square');
     container.appendChild(square);
-} 
+}
 
 const clearButton = document.getElementById('clear');
 
@@ -19,19 +19,26 @@ const blackButton = document.querySelector('#black');
 
 const rainbowButton = document.querySelector('#rainbow');
 
-function paintItBlack() {
+function addBlackClass(e) {
+    e.target.style = '';
+    e.target.classList.add('black');
+}
+
+function activateBlackMode() {
     allSquares.forEach((square) => {
-        square.addEventListener('mouseover', e => {
-            e.target.classList.add('black');
-        })
+        square.removeEventListener('mouseover', addRandomColor);
+        square.addEventListener('mouseover', addBlackClass)
     })
 }
 
-function paintItRainbow(){
+function addRandomColor(e) {
+    e.target.style.cssText = `background-color: rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`
+}
+
+function activateRandomMode() {
     allSquares.forEach((square) => {
-        square.addEventListener('mouseover', e => {
-            e.target.style.cssText = `background-color: rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`
-        })
+        square.removeEventListener('mouseover', addBlackClass);
+        square.addEventListener('mouseover', addRandomColor);
     })
 }                                                          
 
@@ -41,8 +48,8 @@ function clearGrid() {
         })
 }
 
-blackButton.addEventListener('click', paintItBlack)
+blackButton.addEventListener('click', activateBlackMode)
 
-rainbowButton.addEventListener('click', paintItRainbow)
+rainbowButton.addEventListener('click', activateRandomMode)
 
-clearButton.addEventList('click', clearGrid)                                                   
+clearButton.addEventListener('click', clearGrid)                                                   
