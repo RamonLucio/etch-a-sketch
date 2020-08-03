@@ -21,6 +21,8 @@ const rainbowButton = document.querySelector('#rainbow');
 
 const opacityButton = document.querySelector('#opacity');
 
+const displayGridButton = document.querySelector('#grid')
+
 function addBlackClass(e) {
     e.target.style = '';
     e.target.classList.add('black');
@@ -60,6 +62,12 @@ function activateOpacityMode() {
     })
 }
 
+function displayGrid() {
+    allSquares.forEach((square) => {
+        square.style.cssText = "border: 1px dotted grey"
+    })
+}
+
 function clearGrid() {
     allSquares.forEach((square) => {
         square.style = '';
@@ -72,5 +80,7 @@ blackButton.addEventListener('click', activateBlackMode)
 rainbowButton.addEventListener('click', activateRandomMode)
 
 opacityButton.addEventListener('click', activateOpacityMode)
+
+displayGridButton.addEventListener('click', displayGrid)
 
 clearButton.addEventListener('click', clearGrid)                                       

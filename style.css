@@ -1,11 +1,14 @@
+body {
+    background-color: red;
+}
+
 #container {
     width: 512px;
     height: 512px;
+    background-color: white;
+    border: 1px solid grey;
+    margin: 0 auto;
     display: grid;
-}
-
-.square {
-    border: 1px dotted grey;
 }
 
 .black {
