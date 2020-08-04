@@ -62,12 +62,6 @@ function activateOpacityMode() {
     })
 }
 
-function displayGrid() {
-    allSquares.forEach((square) => {
-        square.style.cssText = "border: 1px dotted grey"
-    })
-}
-
 function clearGrid() {
     allSquares.forEach((square) => {
         square.style = '';
@@ -80,7 +74,5 @@ blackButton.addEventListener('click', activateBlackMode)
 rainbowButton.addEventListener('click', activateRandomMode)
 
 opacityButton.addEventListener('click', activateOpacityMode)
-
-displayGridButton.addEventListener('click', displayGrid)
 
 clearButton.addEventListener('click', clearGrid)                                       
