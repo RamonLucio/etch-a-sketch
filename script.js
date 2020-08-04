@@ -75,4 +75,6 @@ rainbowButton.addEventListener('click', activateRandomMode)
 
 opacityButton.addEventListener('click', activateOpacityMode)
 
-clearButton.addEventListener('click', clearGrid)                                       
+clearButton.addEventListener('click', clearGrid)
+
+activateBlackMode();
